@@ -1,0 +1,163 @@
+.row1 {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 70px; /* Adjusted margin to counteract the padding */
+  margin-right: 70px; /* Adjusted margin to counteract the padding */
+}
+
+.column1 {
+  flex: 1 1 calc(25% - 24px); /* Adjusted flex basis to account for margins */
+  margin-bottom: 60px;
+  padding: 0 12px;
+  border-radius: 20px;
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  position: relative; /* Added */
+}
+
+.column1:first-child {
+  margin-left: 0; /* No margin on the left side of the first card */
+}
+
+.column1:last-child {
+  margin-right: 0; /* No margin on the right side of the last card */
+}
+
+.card1 img {
+  border-radius: 20px;
+  outline: 2px solid #d4a373;
+}
+
+.buttons-container {
+  position: absolute; /* Position the button container */
+  bottom: 0; /* Align at the bottom */
+  left: 0;
+  width: 100%; /* Occupy full width */
+}
+
+.buttons {
+  border: none;
+  outline: 0;
+  padding: 8px;
+  color: black;
+  background-color: #e9edc9;
+  outline: 2px solid black;
+  border-radius: 20px;
+  text-align: center;
+  cursor: pointer;
+  width: 100%; /* Occupy full width */
+}
+
+
+
+  
+  @media screen and (max-width: 1024px) {
+    .column1 {
+      flex: 1 1 50%;
+    }
+  }
+  
+  @media screen and (max-width: 650px) {
+    .column1 {
+      flex: 1 1 100%;
+    }
+
+    .row1 {
+        margin-left: 5px; /* Adjusted margin to counteract the padding */
+        margin-right: 5px; /* Adjusted margin to counteract the padding */
+      }
+  }
+  
+  .card1 {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border-radius: 20px;
+    background-color: #e9edc9;
+    opacity: 0.9;
+    outline: 2px solid #d4a373;
+    box-shadow: 0 10px 15px 0 rgba(0, 0, 0, 0.5);
+
+  }
+  
+  .container1 {
+    padding: 16px;
+    flex: 1;
+    border-radius: 20px;
+    background-color: #e9edc9;
+    opacity: 0.9;
+  }
+  
+  .container1::after,
+  .row1::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  
+  .title1 {
+    color: #000;
+    font-style: oblique;
+  }
+
+.container1 h2 {
+    margin-top: 0;
+    font-size: 1.5rem; 
+    color: #333; 
+    text-align: center; 
+}
+
+.container1 p {
+    margin-bottom: 10px; 
+    line-height: 1.5; 
+}
+
+.container1 p b {
+    font-weight: bold; 
+}
+.popup-form {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  border-radius: 8px;
+  z-index: 9999;
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 998;
+}
+
+.close-form-btn {
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  font-weight: 100;
+  background: transparent;
+  border: none;
+  color: black;
+  cursor: pointer;
+  padding: 0;
+  color: red;
+  line-height: 1;
+  margin-bottom: 30px;
+  z-index: 9999;
+  float: right;
+}
+
+.close-form-btn:hover {
+  color: #000;
+  /* Change color on hover */
+}
+/*sasd*/  
