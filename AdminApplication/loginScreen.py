@@ -64,7 +64,7 @@ entry_username.place(relx=0.58, rely=0.379)
 entry_password = tk.Entry(root, show="*", width=48, borderwidth=0, highlightthickness=0, font=("Century Gothic", 12))
 entry_password.place(relx=0.58, rely=0.508)
 
-login_button = tk.Button(root, command=login, text="Login", width=20, height=2, borderwidth=0, highlightthickness=0, background="#FFF", activebackground="#FFF", cursor="hand2", font=("Century Gothic", 10))                      
+login_button = tk.Button(root, command=login, text="L O G I N", width=20, height=2, borderwidth=0, highlightthickness=0, background="#E2E182", activebackground="#E2E182", cursor="hand2", font=("Century Gothic", 10, "bold"))                      
 login_button.place(relx=0.682, rely=0.615)
 
 root.mainloop()

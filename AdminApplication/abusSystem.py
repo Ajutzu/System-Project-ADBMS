@@ -77,7 +77,7 @@ def on_double_click(event, tree):
     updates1.pack()
     updates1.lower()
     # Create and place the label for the dropdown menu
-    update_label = tk.Label(popup, text="Column you want to update:", font=("Century Gothic", 9), bg='#3586ff', fg="#FFF")
+    update_label = tk.Label(popup, text="Column you want to update:", font=("Century Gothic", 9), bg='#FBF8E2', fg="black")
     x_coordinate = (popup.winfo_width() - update_label.winfo_reqwidth()) / 2
     update_label.place(x=x_coordinate, y=5)
 
@@ -91,8 +91,8 @@ def on_double_click(event, tree):
     
     # Create the dropdown menu
     update_dropdown = tk.OptionMenu(popup, selected_option, *options)
-    update_dropdown.config(fg='#3586ff', bd=0, width=15 , bg="#FFF")
-    update_dropdown.config(activeforeground='#3586ff', activebackground="#FFF")  # For active state
+    update_dropdown.config(fg='black', bd=0, width=15 , bg="#FFF")
+    update_dropdown.config(activeforeground='black', activebackground="#FFF")  # For active state
     x_coordinate = (popup.winfo_width() - update_dropdown.winfo_reqwidth()) / 2
     update_dropdown.place(x=x_coordinate, y=32)
 
@@ -145,7 +145,7 @@ def on_double_click(event, tree):
             messagebox.showerror("Error", str(e))
 
     # Create and place the label and entry for the value to update
-    value_label = tk.Label(popup, text="New value:", font=("Century Gothic", 9), bg='#3586ff', fg="#FFF")
+    value_label = tk.Label(popup, text="New value:", font=("Century Gothic", 9), bg='#FBF8E2', fg="black")
     x_coordinate = (popup.winfo_width() - value_label.winfo_reqwidth()) / 2
     value_label.place(x=x_coordinate, y=65)
 
@@ -154,7 +154,7 @@ def on_double_click(event, tree):
     value_entry.place(x=x_coordinate, y=90)
 
     # Create and place the update button
-    update_button = tk.Button(popup, text="Update", command=update_record, cursor="hand2", font=("Century Gothic", 7), fg='#3586ff', bd=0, width=15 , bg="#FFF")
+    update_button = tk.Button(popup, text="Update", command=update_record, cursor="hand2", font=("Century Gothic", 7), fg='black', bd=0, width=15 , bg="#E2E182")
     x_coordinate = (popup.winfo_width() - update_button.winfo_reqwidth()) / 2
     update_button.place(x=x_coordinate, y=119)
     
@@ -376,13 +376,13 @@ def contact_page(tree1):
         tree1.insert(parent='', index='end', text='', values=row)
         
 def contact_page():
-    contact_frame= tk.Frame(main_frame, background='#3586ff', highlightbackground='#3586ff', highlightthickness=0.5)
+    contact_frame= tk.Frame(main_frame, background='#814B27', highlightbackground='#814B27', highlightthickness=0.5)
 
     contact_frame.pack(pady=10)
 
     # Date Label
     # Date Label
-    date_label = tk.Label(contact_frame, text="Select row to delete:  ", font=("Century Gothic", 9), bg="#3586ff", fg='#FFF')
+    date_label = tk.Label(contact_frame, text="Select row to delete:  ", font=("Century Gothic", 9), bg="#814B27", fg='#FFF')
     date_label.grid(row=2, column=1, sticky='e')
         
     # Date Entry with Date Picker
@@ -390,13 +390,13 @@ def contact_page():
     date_entry.grid(row=2, column=0, padx=5, pady=7, sticky='e')
 
     # Filter Button
-    filter_button = tk.Button(contact_frame, text="Filter", cursor="hand2", font=("Century Gothic", 7), command=lambda: filter_data(date_entry, cursor, tree), bg='#FFF', bd=0, width=10, fg="#3586ff" )
+    filter_button = tk.Button(contact_frame, text="Filter", cursor="hand2", font=("Century Gothic", 7), command=lambda: filter_data(date_entry, cursor, tree), bg='#E2E182', bd=0, width=10, fg="black" )
     filter_button.grid(row=2, column=1, padx=5, pady=7, sticky='w')
 
     # Creating a Treeview widget
     tree = ttk.Treeview(contact_frame)
         
-    delete_button = tk.Button(contact_frame, text="Delete", cursor="hand2", font=("Century Gothic", 7), command=lambda: delete_selected_row(cursor, tree), bg='#FFF', bd=0, width=10, fg="#3586ff" )
+    delete_button = tk.Button(contact_frame, text="Delete", cursor="hand2", font=("Century Gothic", 7), command=lambda: delete_selected_row(cursor, tree), bg='#E2E182', bd=0, width=10, fg="black" )
     delete_button.grid(row=2, column=2, sticky='w')
 
     vsb = Scrollbar(contact_frame, orient="vertical", command=tree.yview)
@@ -496,7 +496,7 @@ def contact_page():
 
     # Add custom style
     style.theme_use('default')  # You can choose other themes like "clam", "alt", etc. 
-    style.configure("Treeview.Heading", font=("Century Gothic", 8), background="#3586ff", foreground="White")  # Customizing heading font
+    style.configure("Treeview.Heading", font=("Century Gothic", 8), background="#814B27", foreground="White")  # Customizing heading font
     style.configure("Treeview", font=("Century Gothic", 8))  # Customizing cell font
     style.configure("Treeview", background="#E4E9F7")  # Customizing background color
     style.configure("Treeview", foreground="black")  # Customizing text color
@@ -510,25 +510,25 @@ def contact_page():
     rows = cursor.fetchall()
 
 def request_page():
-    request_frame= tk.Frame(main_frame, background='#3586ff', highlightbackground='#3586ff', highlightthickness=0.5)
+    request_frame= tk.Frame(main_frame, background='#814B27', highlightbackground='#814B27', highlightthickness=0.5)
 
     # Date Label
 
-    date_entry = tk.Entry(request_frame, width=1, bd=0, highlightbackground='#3586ff', bg='#3586ff')
+    date_entry = tk.Entry(request_frame, width=1, bd=0, highlightbackground='#814B27', bg='#814B27')
     date_entry.grid(row=2, column=0, padx=5,pady=7, sticky='w')
     
-    date_label = tk.Label(request_frame, text="Select row the message you want to delete:  ", font=("Century Gothic", 9), bg="#3586ff", fg='#FFF')
+    date_label = tk.Label(request_frame, text="Select row the message you want to delete:  ", font=("Century Gothic", 9), bg="#814B27", fg='#FFF')
     date_label.grid(row=2, column=0, sticky='e')
         
     # Date Entry
-    delete_all_button = tk.Button(request_frame, text="Delete All", cursor="hand2", font=("Century Gothic", 7), command=lambda: delete_all_messages(cursor, tree), bg='#FFF',  bd=0,  width=10, fg="#3586ff")
+    delete_all_button = tk.Button(request_frame, text="Delete All", cursor="hand2", font=("Century Gothic", 7), command=lambda: delete_all_messages(cursor, tree), bg='#E2E182',  bd=0,  width=10, fg="black")
     delete_all_button.grid(row=2, column=2, sticky='w')
 
-    date_label2 = tk.Label(request_frame, text=" Delete all messages:  ", font=("Century Gothic", 9), bg="#3586ff", fg='#FFF')
+    date_label2 = tk.Label(request_frame, text=" Delete all messages:  ", font=("Century Gothic", 9), bg="#814B27", fg='#FFF')
     date_label2.grid(row=2, column=1, sticky='e')
         
     # Filter Button 
-    filter_button = tk.Button(request_frame, text="Delete", cursor="hand2", font=("Century Gothic", 7), command=lambda: delete_message(cursor, tree), bg='#FFF', bd=0, width=10, fg="#3586ff" )
+    filter_button = tk.Button(request_frame, text="Delete", cursor="hand2", font=("Century Gothic", 7), command=lambda: delete_message(cursor, tree), bg='#E2E182', bd=0, width=10, fg="black" )
     filter_button.grid(row=2, column=1, sticky='w')
     # Creating a Treeview widget
     tree = ttk.Treeview(request_frame)
@@ -572,7 +572,7 @@ def request_page():
 
 # Add custom style
     style.theme_use('default')  # You can choose other themes like "clam", "alt", etc. 
-    style.configure("Treeview.Heading", font=("Century Gothic", 8), background="#3586ff", foreground="White")  # Customizing heading font
+    style.configure("Treeview.Heading", font=("Century Gothic", 8), background="#814B27", foreground="White")  # Customizing heading font
     style.configure("Treeview", font=("Century Gothic", 8))  # Customizing cell font
     style.configure("Treeview", background="#E4E9F7")  # Customizing background color
     style.configure("Treeview", foreground="black")  # Customizing text color
@@ -585,13 +585,13 @@ def request_page():
     request_frame.pack(pady=10)
     
 def hide_indicators():
-    home_indicate.config(bg='#FFF')
-    contact_indicate.config(bg='#FFF')
-    request_indicate.config(bg='#FFF')
+    home_indicate.config(bg='#FBF8E2')
+    contact_indicate.config(bg='#FBF8E2')
+    request_indicate.config(bg='#FBF8E2')
 
 def indicate(lb, page):
     hide_indicators()
-    lb.config(bg='#3586ff')
+    lb.config(bg='#814B27')
     delete_page()
     page()
 
@@ -608,39 +608,38 @@ y = (screen_height - window_height) // 2
 root.geometry(f"{window_width}x{window_height}+{x}+{y}")
 root.resizable(False, False)
 
-options_frame = tk.Frame(root, bg='#FFF')
+options_frame = tk.Frame(root, bg='#FBF8E2')
 
 resized_image = title.subsample(3, 3)
 titles = tk.Label(root, image=resized_image,  borderwidth=0, highlightthickness=0)
 titles.place(x=15, y=30)
 
-home_btn = tk.Button(options_frame, text='Dashboard',cursor="hand2", font=("Century Gothic", 12),fg='#707070', bd=0, width=10, bg="#FFF", command=lambda: indicate(home_indicate, home_page))
+home_btn = tk.Button(options_frame, text='Dashboard',cursor="hand2", font=("Century Gothic", 12),fg='#707070', bd=0, width=10, bg="#FBF8E2", command=lambda: indicate(home_indicate, home_page))
 home_btn.place(x=10, y=100)
 
-home_indicate = tk.Label(options_frame, text='', bg='#FFF')
+home_indicate = tk.Label(options_frame, text='', bg='#FBF8E2')
 home_indicate.place(x=10, y=100, width=5, height=35)
 
-contact_btn = tk.Button(options_frame, text='List Bookings',cursor="hand2", font=("Century Gothic", 12),fg='#707070', bd=0, width=11, bg="#FFF",  command=lambda: indicate(contact_indicate, contact_page))
+contact_btn = tk.Button(options_frame, text='List Bookings',cursor="hand2", font=("Century Gothic", 12),fg='#707070', bd=0, width=11, bg="#FBF8E2",  command=lambda: indicate(contact_indicate, contact_page))
 contact_btn.place(x=10, y=150)
 
-contact_indicate = tk.Label(options_frame, text='', bg='#FFF')
+contact_indicate = tk.Label(options_frame, text='', bg='#FBF8E2')
 contact_indicate.place(x=10, y=150, width=5, height=35)
 
-tm = tk.Label(root, text='DBMS Group Inc.™', bg="#FFF", fg="#707070", font=("Century Gothic", 7))
+tm = tk.Label(root, text='DBMS Group Inc.™', bg="#FBF8E2", fg="#707070", font=("Century Gothic", 7))
 tm.place(x=47, y=680)
 
-message_btn = tk.Button(options_frame, text='Client Feedback', cursor="hand2", font=("Century Gothic", 12), fg='#707070', bd=0, width=14, bg="#FFF", command=lambda: indicate(request_indicate, request_page))
+message_btn = tk.Button(options_frame, text='Client Feedback', cursor="hand2", font=("Century Gothic", 12), fg='#707070', bd=0, width=14, bg="#FBF8E2", command=lambda: indicate(request_indicate, request_page))
 message_btn.place(x=10, y=200)
 
-request_indicate = tk.Label(options_frame, text='', bg='#FFF')
+request_indicate = tk.Label(options_frame, text='', bg='#FBF8E2')
 request_indicate.place(x=10, y=200, width=5, height=35)
-
 
 options_frame.pack(side=tk.LEFT)
 options_frame.pack_propagate(False)
 options_frame.configure(width=200, height=720,  borderwidth=0, highlightthickness=0)
 
-main_frame = tk.Frame(root, bg="#FFF" ,highlightbackground='#3586ff', highlightthickness=0.5)
+main_frame = tk.Frame(root, bg="#FBF8E2" ,highlightbackground='#814B27', highlightthickness=1.5)
 main_frame.pack(side=tk.LEFT)
 main_frame.pack_propagate(False)
 main_frame.configure(height=720, width=1280)

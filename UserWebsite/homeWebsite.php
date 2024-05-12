@@ -597,7 +597,6 @@
             $ads = $_POST['ads'];
             $time_in = $_POST['time_in'];
             $time_out = $_POST['time_out'];
-            $date = $_POST['date'];
             $heads = $_POST['heads'];
 
             try {
@@ -605,44 +604,35 @@
                 $pdo = new PDO($dsn, $user, $password);
                 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-                $stmt = $pdo->prepare("SELECT time_in, time_out, date FROM visitinfo");
+                $stmt = $pdo->prepare("SELECT time_in, time_out, date FROM visitinfo WHERE date = :date");
+                $stmt->bindParam(':date', $date);
+                $date = $_POST['date']; 
                 $stmt->execute();
                 $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-
+                
                 $slotAvailable = true;
-                // Loop through each row
+                
+                $newTimeIn = strtotime($time_in);
+                $newTimeOut = strtotime($time_out);
+
                 foreach ($rows as $row) {
-                    $rowTimeIn = substr($row['time_in'], 0, 5); // Extract HH:MM from HH:MM:SS
-                    $rowTimeOut = substr($row['time_out'], 0, 5); // Extract HH:MM from HH:MM:SS
-
-                    // Compare the values
-                    if ($time_in >= $rowTimeIn && $time_out <= $rowTimeOut && $date == $row['date']) {
-                        // Display an error message using SweetAlert2
+                    $existingTimeIn = strtotime($row['time_in']);
+                    $existingTimeOut = strtotime($row['time_out']);
+                    
+                    // Check for overlap
+                    if (($newTimeIn >= $existingTimeIn && $newTimeIn < $existingTimeOut) ||
+                        ($newTimeOut > $existingTimeIn && $newTimeOut <= $existingTimeOut) ||
+                        ($newTimeIn <= $existingTimeIn && $newTimeOut >= $existingTimeOut)) {
                         $slotAvailable = false;
-                        break;
-                    } else if ($time_in <= $rowTimeOut && $time_out >= $rowTimeIn && $date == $row['date']) {
-                        // Calculate the midpoint of the current time slot
-                        $midpoint = ($time_in + $time_out) / 2;
-
-                        // Check if the midpoint falls within any existing booked time slots
-                        if ($midpoint >= $rowTimeIn && $midpoint <= $rowTimeOut) {
-                            // Display an error message using SweetAlert2
-                            $slotAvailable = false;
-                            break;
-                        }
+                        break; 
                     }
                 }
+                
 
-                $stmt2 = $pdo->prepare("SELECT time_in, time_out FROM visitinfo WHERE date = :date");
-                $stmt2->bindParam(':date', $date);
-                $date = $_POST['date']; // Assuming you get the user inputted date from a form
-                $stmt2->execute();
-                $rows2 = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 
                 if (!$slotAvailable) {
                     $message = "<strong>Taken time slots for $date:</strong><br><br>";
-                    foreach ($rows2 as $row) {
+                    foreach ($rows as $row) {
                         $message .= "Time In: " . $row['time_in'] . ", Time Out: " . $row['time_out'] . "<br>";
                     }
                     echo "<script>Swal.fire({html: '$message', icon: 'error'});</script>";
@@ -683,11 +673,11 @@
                     switch ($package) {
                         case 'package1':
                             $total_price += 5000;
-                            if ($time_in >= '19:00' && $time_out <= '6:00') {
+                            if ($newTimeIn >= '19:00:00' && $newTimeOut <= '6:00:00') {
                                 for ($i = 0; $i < $heads; $i++) {
                                     $total_price += 250;
                                 }
-                            } elseif ($time_in >= '06:00' && $time_out <= '19:00') {
+                            } elseif ($newTimeIn >= '06:00:00' && $newTimeOut <= '19:00:00') {
                                 for ($i = 0; $i < $heads; $i++) {
                                     $total_price += 200;
                                 }
@@ -696,12 +686,12 @@
 
                         case 'package2':
                             $total_price += 25000;
-                            if ($time_in >= '19:00' && $time_out <= '6:00' && $heads > 200) {
+                            if ($newTimeIn >= '19:00:00' && $newTimeOut <= '6:00:00' && $heads > 200) {
                                 $excess_heads = $heads - 200;
                                 for ($i = 0; $i < $excess_heads; $i++) {
                                     $total_price += 250;
                                 }
-                            } elseif ($time_in >= '06:00' && $time_out <= '19:00' && $heads > 200) {
+                            } elseif ($newTimeIn >= '06:00:00' && $newTimeOut <= '19:00:00' && $heads > 200) {
                                 $excess_heads = $heads - 200;
                                 for ($i = 0; $i < $excess_heads; $i++) {
                                     $total_price += 200;
@@ -712,12 +702,12 @@
 
                         case 'package3':
                             $total_price += 40000;
-                            if ($time_in >= '19:00' && $time_out <= '6:00' && $heads > 250) {
+                            if ($newTimeIn >= '19:00:00' && $newTimeOut <= '6:00:00' && $heads > 250) {
                                 $excess_heads = $heads - 250;
                                 for ($i = 0; $i < $excess_heads; $i++) {
                                     $total_price += 250;
                                 }
-                            } elseif ($time_in >= '06:00' && $time_out <= '19:00' && $heads > 250) {
+                            } elseif ($newTimeIn >= '06:00:00' && $newTimeOut <= '19:00:00' && $heads > 250) {
                                 $excess_heads = $heads - 250;
                                 for ($i = 0; $i < $excess_heads; $i++) {
                                     $total_price += 200;
@@ -728,11 +718,11 @@
 
                         case 'no-package':
                             $total_price += 500;
-                            if ($time_in >= '19:00' && $time_out <= '6:00') {
+                            if ($newTimeIn >= '19:00:00' && $newTimeOut <= '6:00:00') {
                                 for ($i = 0; $i < $heads; $i++) {
                                     $total_price += 250;
                                 }
-                            } elseif ($time_in >= '06:00' && $time_out <= '19:00') {
+                            } elseif ($newTimeIn >= '06:00:00' && $newTimeOut <= '19:00:00') {
                                 for ($i = 0; $i < $heads; $i++) {
                                     $total_price += 200;
                                 }

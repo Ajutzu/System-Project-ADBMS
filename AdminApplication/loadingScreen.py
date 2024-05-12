@@ -24,11 +24,10 @@ def main():
     bg_label.place(x=0, y=0)
 
     progress_label = tk.Label(root, text="Loading...", font=("Century Gothic", 12), fg="#FFF", bg="#FFF")
-    progress_label.place(x=30, y=370)
 
     progress = ttk.Style()
     progress.theme_use('default')
-    progress.configure("red.Horizontal.TProgressbar", background="#3586ff", troughcolor="White", bordercolor="black")
+    progress.configure("red.Horizontal.TProgressbar", background="#814B27", troughcolor="White", bordercolor="black")
 
     progress = Progressbar(root, orient='horizontal', length=610, mode='determinate', style="red.Horizontal.TProgressbar")
     progress.place(x=330, y=390)
