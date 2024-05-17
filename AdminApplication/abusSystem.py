@@ -14,7 +14,7 @@ root.iconphoto(False, icon)
 
 try:
     connection = psycopg2.connect(
-                dbname="ABU'S",
+                dbname="ABUS",
                 user="postgres",
                 password="postgres",
                 host="localhost",
@@ -604,7 +604,7 @@ screen_height = root.winfo_screenheight()
 window_width = 1280
 window_height = 720
 x = (screen_width - window_width) // 2
-y = (screen_height - window_height) // 2
+y = (screen_height - window_height) // 3
 root.geometry(f"{window_width}x{window_height}+{x}+{y}")
 root.resizable(False, False)
 

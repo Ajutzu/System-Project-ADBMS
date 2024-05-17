@@ -19,7 +19,7 @@ def login():
     
     try:
         connection = psycopg2.connect(
-                dbname="ABU'S",
+                dbname="ABUS",
                 user="postgres",
                 password="postgres",
                 host="localhost",

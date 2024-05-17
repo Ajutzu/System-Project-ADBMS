@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ABU'S</title>
+    <title>ABUS</title>
     <link rel="stylesheet" href="homeDesign.css">
     <link rel="stylesheet" href="AppointDesign.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -164,7 +164,7 @@
                             // Database connection parameters
                             $host = 'localhost';
                             $port = '5432';
-                            $dbname = "ABU'S";
+                            $dbname = "ABUS";
                             $user = 'postgres';
                             $password = 'postgres';
 
@@ -306,7 +306,7 @@
                         $subject = $_POST["subject"];
 
                         try {
-                            $pdo = new PDO("pgsql:host=localhost;dbname=ABU'S", "postgres", "postgres");
+                            $pdo = new PDO("pgsql:host=localhost;dbname=ABUS", "postgres", "postgres");
                             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
                             // Check if the full name already exists in the database
@@ -355,7 +355,7 @@
     </div>
 
     <div>
-        <h1 style="text-align: center; margin-top:150px">Sneak peek of ABU's Resort</h1>
+        <h1 style="text-align: center; margin-top:150px">Sneak peek of ABUS Resort</h1>
         <div class="border"></div>
         <div class="carousel" id="1">
             <ul class="slides">
@@ -582,7 +582,7 @@
             // Database connection details
             $host = 'localhost';
             $port = '5432';
-            $dbname = 'ABU\'S';
+            $dbname = 'ABUS';
             $user = 'postgres';
             $password = 'postgres';
 

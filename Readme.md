@@ -10,11 +10,11 @@
 
 **Admin Application**
 
-![Alt Text](https://drive.google.com/uc?id=14rZCAzPpPpb1LvvAbW5B0OdcYOBqmuSe)
-![Alt Text](https://drive.google.com/uc?id=1tfxdS-ukkqLK08PfS0CsEkKBSbMO6dYT)
-![Alt Text](https://drive.google.com/uc?id=1Ky2jdO6AAx2JS0t3MTL9cy25U5vuDq9d)
-![Alt Text](https://drive.google.com/uc?id=1xC2yh3tuKRXjpeYlmK428PRfWKl4it3W)
-![Alt Text](https://drive.google.com/uc?id=1QHW6wPFPYPK6Z2KAucaXOzMC8R5772Tr)
+![Alt Text](https://drive.google.com/uc?id=)
+![Alt Text](https://drive.google.com/uc?id=)
+![Alt Text](https://drive.google.com/uc?id=)
+![Alt Text](https://drive.google.com/uc?id=)
+![Alt Text](https://drive.google.com/uc?id=)
 
 
 
