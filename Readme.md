@@ -1,5 +1,5 @@
 # ADBMS Final Project 2nd Year
-
+This is the second project I made for Advanced Database Management Systems. It uses XAMPP for its server and includes the fundamentals of SQL CRUD operations. I used PHP, HTML, CSS, and JavaScript for the website, while the management system is built using Python.
 **User/Client Website**
 
 ![Alt Text](https://drive.google.com/uc?id=1DTU1UwsF5o58EhsB8EeHbg-f0WJAy7du)
